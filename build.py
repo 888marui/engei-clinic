@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""園芸クリニック（仮）の静的ビルド。
+"""園芸クリニックの静的ビルド。
 
 articles.py のデータから public/ に HTML を生成する（kitchen-point-note の fetch.py と同じ型）。
 使い方: python3 build.py   → public/ 以下にトップ・カテゴリハブ・症状ハブ・記事・sitemap.xml・robots.txt を出力。
@@ -12,11 +12,11 @@ from pathlib import Path
 from articles import ARTICLES, CATEGORIES, SYMPTOMS
 
 BASE = "https://engei-clinic.com"
-SITE_NAME = "園芸クリニック（仮）"  # サイト名は未決定。決定後にここを差し替える
+SITE_NAME = "園芸クリニック"  # 2026-11-27 正式決定
 OUT = Path(__file__).parent / "public"
 
 # --- ドメイン確定後に差し込むプレースホルダ（手順は README.md） ---
-GA4_ID = ""  # 例: "G-XXXXXXXXXX"。空なら計測タグを出さない
+GA4_ID = "G-N5HMER8B3F"  # engei-clinic プロパティ（2026-11-27 作成）。空なら計測タグを出さない
 GSC_VERIFICATION = ""  # Google Search Console の所有権確認メタタグの content 値。空なら出さない
 
 CSS = """*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;color:#26302a;background:#fbfbf8;line-height:1.8}

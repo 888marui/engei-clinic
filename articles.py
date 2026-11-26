@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""園芸クリニック（仮）の記事データ。
+"""園芸クリニックの記事データ。
 
 記事はこのファイルにデータとして追加していく（kitchen-point-note の guides.py と同じ型）。
 ビルドは build.py が行い、public/ に静的 HTML を生成する。
