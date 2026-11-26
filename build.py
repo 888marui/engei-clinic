@@ -24,7 +24,7 @@ a{color:#2e6b34}header.site{background:#2e6b34;color:#fff;padding:14px 16px}head
 main{max-width:760px;margin:0 auto;padding:20px 16px 48px}h1{font-size:26px;line-height:1.45;margin:8px 0 12px}h2{font-size:20px;border-left:5px solid #2e6b34;padding-left:10px;margin:32px 0 12px}h3{font-size:17px;margin:24px 0 8px}
 .lead{color:#4c5a50}.conclusion{background:#eef5ee;border:1px solid #cfe0cf;border-radius:8px;padding:14px 16px}.conclusion b{display:block;margin-bottom:4px}
 table.cmp{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}table.cmp th,table.cmp td{border:1px solid #d5ddd5;padding:8px 10px;text-align:left;vertical-align:top}table.cmp thead th{background:#eef5ee}
-ul.chk{padding-left:20px}.figcap{font-size:13px;color:#66736a}.card{border:1px solid #d5ddd5;border-radius:8px;padding:12px 16px;margin:10px 0;background:#fff}.card a{font-weight:700;text-decoration:none}
+ul.chk{padding-left:20px}figure.photo{margin:16px 0}figure.photo img{max-width:100%;height:auto;border-radius:6px;display:block}figure.photo figcaption{font-size:13px;color:#66736a;margin-top:4px}.figcap{font-size:13px;color:#66736a}.card{border:1px solid #d5ddd5;border-radius:8px;padding:12px 16px;margin:10px 0;background:#fff}.card a{font-weight:700;text-decoration:none}
 nav.hubs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}nav.hubs a{border:1px solid #2e6b34;border-radius:999px;padding:4px 14px;text-decoration:none;font-size:14px}
 footer.site{border-top:1px solid #d5ddd5;padding:16px;font-size:13px;color:#66736a;text-align:center}.faq h3{margin-bottom:4px}.src{font-size:14px}
 """
@@ -109,6 +109,10 @@ def main():
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
+    # 写真などの静的アセット（assets/ があれば public/assets/ へそのままコピー）
+    assets = Path(__file__).parent / "assets"
+    if assets.exists():
+        shutil.copytree(assets, OUT / "assets")
     urls = []
 
     # トップ
