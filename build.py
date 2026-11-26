@@ -147,7 +147,12 @@ def main():
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n', encoding="utf-8")
     (OUT / "robots.txt").write_text(
-        f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
+        "User-agent: *\n"
+        "Content-Signal: search=yes, ai-input=yes, ai-train=yes\n"
+        "Allow: /\n\n"
+        "User-agent: OAI-SearchBot\nAllow: /\n\n"
+        "User-agent: PerplexityBot\nAllow: /\n\n"
+        f"Sitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
     (OUT / "404.html").write_text(
         f"<!DOCTYPE html><html lang=\"ja\"><head><meta charset=\"utf-8\"><title>ページが見つかりません｜{SITE_NAME}</title></head>"
         f"<body><h1>ページが見つかりません</h1><p><a href=\"/\">トップへ戻る</a></p></body></html>\n", encoding="utf-8")
