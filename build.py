@@ -22,6 +22,7 @@ OUT = Path(__file__).parent / "public"
 # --- ドメイン確定後に差し込むプレースホルダ（手順は README.md） ---
 GA4_ID = "G-N5HMER8B3F"  # engei-clinic プロパティ（2026-11-27 作成）。空なら計測タグを出さない
 GSC_VERIFICATION = ""  # Google Search Console の所有権確認メタタグの content 値。空なら出さない
+BING_VERIFICATION = "75022CA463B8E61A9D78668E08B2905A"  # Bing Webmaster Tools の所有権確認メタタグ（msvalidate.01、2026-11-28 登録）。空なら出さない
 
 CSS = """*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;color:#26302a;background:#fbfbf8;line-height:1.8}
 a{color:#2e6b34}header.site{background:#2e6b34;color:#fff;padding:14px 16px}header.site a{color:#fff;text-decoration:none;font-weight:700;font-size:20px}header.site .tag{display:block;font-size:12px;font-weight:400;opacity:.85}
@@ -94,6 +95,8 @@ def ga_tag():
 def page(path, title, body, desc="", ld=None):
     url = BASE + path
     gsc = f'<meta name="google-site-verification" content="{GSC_VERIFICATION}">' if GSC_VERIFICATION else ""
+    if BING_VERIFICATION:
+        gsc += f'<meta name="msvalidate.01" content="{BING_VERIFICATION}">'  # Bing 所有権確認
     doc = f"""<!DOCTYPE html>
 <html lang="ja"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
